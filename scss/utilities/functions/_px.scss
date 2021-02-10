@@ -1,0 +1,22 @@
+// @file _px.scss
+
+/// Add `px` to the end of a unitless numerical value.
+///
+/// @author @jhogue
+/// @group utilities
+///
+/// @require strip-unit
+///
+/// @param {float} $value - numeric value assumed to be pixels
+///
+/// @example scss - scss
+///   width: px(48);
+///
+/// @example css - css
+///   width: 48px;
+@function px($value) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @return ($value * 1px);
+}

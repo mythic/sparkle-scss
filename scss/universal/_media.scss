@@ -1,0 +1,9 @@
+// @file _media.scss
+
+img,
+video,
+object {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}

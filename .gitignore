@@ -1,0 +1,7 @@
+/scss/*.css
+/docs
+/sparkle
+/node_modules
+.DS_Store
+.sass-cache
+npm-debug.log

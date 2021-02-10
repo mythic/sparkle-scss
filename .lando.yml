@@ -1,0 +1,16 @@
+name: sparkle-scss
+recipe: mean
+
+config:
+  globals:
+    gulp-cli: latest
+
+tooling:
+  gulp:
+    service: appserver
+  sassdoc:
+    service: appserver
+  sassdocify:
+    service: appserver
+  yo:
+    service: appserver

@@ -1,0 +1,28 @@
+// @file _color.scss
+
+/// Retrieve a color value from one of our defined color sets. See `settings/_colors.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require map-deep-get
+/// @require {map} $colors
+///
+/// @param {string} color-set set to pull a color from - see `settings/_colors.scss`
+/// @param {string} tone name of the color
+///
+/// @example scss - scss
+///   color: color(mono, white);
+///
+/// @example css - css
+///   color: #fff;
+@function color($color-set, $tone:base) {
+
+  @if not index(map-keys($colors), $color-set) {
+    @error 'color `#{$color-set}` does not exist.';
+  }
+  @if not index(map-keys(map-get($colors, $color-set)), $tone) {
+    @error 'There is no `#{$tone}` defined in your `#{$color-set}` color map however, its being called in your theme.';
+  }
+  @return map-deep-get( $colors, $color-set, $tone );
+}

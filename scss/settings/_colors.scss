@@ -1,0 +1,69 @@
+// @file _colors.scss
+
+/////
+/// @group settings
+/////
+
+/// Defines colors for our theme
+$colors: (
+
+  // We should define a "base" for each, so that we can use color(brand) without throwing an error
+  brand: (
+    base: #e43c96, // Sparkle pink
+    pink: #e43c96,
+    blue: #e9bdee,
+    purple: #4a335f,
+    black: #281c33,
+  ),
+
+  // Monochromatic color scheme, edit values in relation to the numeric representation
+  // In other words, keep high values dark and low values light
+  mono: (
+    base: #000,
+    black: #000,
+    90: #303030,
+    75: #4f4f4f,
+    66: #666,
+    33: #999,
+    25: #ccc,
+    15: #e6e6e6,
+    10: #f2f2f2,
+    white: #fff
+  ),
+
+  // Drupal color scheme, if we need it
+  drupal: (
+    base: #0077c0, // Drupal blue
+    blue: #0077c0,
+    light: #81ceff,
+    dark: #00598e
+  ),
+
+  // Social color scheme, if we need it
+  social: (
+    base: #666,
+    facebook: #305891,
+    twitter: #2ca8d2,
+    youtube: #cc1f1f,
+    instagram: #285a85,
+    pinterest: #c82828,
+    tumblr: #384853,
+    linkedin: #007bb5,
+  ),
+);
+
+
+/// Color for the body text
+$color-text: color(brand, black);
+
+/// Default color for links
+$color-link: color(brand, blue);
+
+/// Color for code samples
+$color-code: color(brand);
+
+/// Error message color
+$color-error: red;
+
+/// Color for borders within WYSIWYG
+$color-borders: color(brand, purple);

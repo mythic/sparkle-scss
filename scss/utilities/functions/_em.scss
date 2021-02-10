@@ -1,0 +1,28 @@
+// @file _em.scss
+
+/// Convert a given pixel value to its equivelant `em` value.
+///
+/// @author @thoughtbot
+/// @group utilities
+///
+/// @require strip-unit
+///
+/// @param {float} $value - numeric value assumed to be pixels
+/// @param {float} $base - numeric value for the pixel multiplier *(very optional)*
+///
+/// @example scss - scss
+///   font-size: em(24);
+///   width: em(48, 24);
+///
+/// @example css - css
+///   font-size: 1.5em;
+///   width: 2em;
+@function em($value, $base: $base-type-size-px) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @if not unitless($base) {
+    $base: strip-unit($base);
+  }
+  @return ($value / $base) * 1em;
+}

@@ -1,0 +1,50 @@
+// @file _responsive-video.scss
+
+/// Provides responsive containers for embedded video. Requires a `no-js` class 
+/// to be placed on the 'html' element and a service like Modernizr to flip it 
+/// to `js` when applicable. 
+///
+/// @group utilities
+///
+/// @example markup
+///   <div class="u-responsive-video">
+///    <iframe width="560" height="315" src="//www.youtube.com/embed/TdwT5JlH8gM?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+///   </div>
+.u-responsive-video {
+  .js & {
+    @include proportional-container( 16 9 );
+
+    iframe,
+    object,
+    embed,
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  .no-js & {
+    padding: 1rem;
+    background-color: color(mono, 66);
+    text-align: center;
+
+    &::before {
+      @extend .u-h3;
+      content: 'Sorry, embedded video players need javascript enabled.';
+      width: 100%;
+      color: color(mono, 10);
+    }
+
+    iframe,
+    object,
+    embed,
+    > div {
+      display: none;
+      visibility: hidden;
+    }
+  }
+}

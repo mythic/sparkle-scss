@@ -1,0 +1,60 @@
+// @file _buttons.scss
+
+// Button specific variables
+$button-border-color: color(mono, 25); // used for outline version, same color text
+$button-border-radius: $default-border-radius;
+$button-background-color: color(mono, 33); // used for solid version
+$button-text-color: color(mono, 66); // used for solid version
+$button-padding: 0.5rem 0.75rem;
+$button-font: $font-sans;
+
+/// Creates extendable utility classes for buttons. Use the classes directly in 
+/// the markup or extend them to an existing class. Find settings for button 
+/// variables in `settings/_buttons.scss`.
+///
+/// @group utilities
+///
+/// @example scss
+///   @extend .u-button--solid;
+.u-button {
+  // Set the base styles for a default button
+  @include link() {
+    @include responsive-type-size();
+
+    display: inline-block;
+    line-height: 1.15;
+    border-radius: $button-border-radius;
+    padding: $button-padding;
+    font-family: $button-font;
+    background: $button-background-color;
+    color: $button-text-color;
+    transition: $default-transition;
+  }
+
+  @include link('hover') {
+    background: shade($button-background-color, 30%);
+    text-decoration: none;
+  }
+
+  &--solid {
+    // Solid is the same as the default button above, but we want to make sure 
+    // someone can use this class name
+    @extend .u-button;
+  }
+
+  &--outline {
+    // Always extend the base button styles first, then add your overrides
+    @extend .u-button;
+
+    @include link('idle') {
+      background-color: none;
+      border: solid 1px $button-border-color;
+      color: $button-border-color;
+    }
+
+    @include link('hover') {
+      background-color: $button-border-color;
+      color: $button-text-color;
+    }
+  }
+}

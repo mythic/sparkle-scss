@@ -1,0 +1,30 @@
+{
+  "name": "sparkle-scss",
+  "version": "1.0.0",
+  "description": "A starter website theming kit written with SCSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mythic/sparkle-scss.git"
+  },
+  "author": "nicholemaureen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mythic/sparkle-scss/issues"
+  },
+  "homepage": "https://github.com/mythic/sparkle-scss#readme",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-stylelint": "^13.0.0",
+    "prettier": "^2.0.5",
+    "sassdoc": "^2.7.3",
+    "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-scss": "^3.18.0"
+  }
+}

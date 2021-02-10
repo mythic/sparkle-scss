@@ -1,0 +1,48 @@
+// Styles for the window inside ckeditor
+
+// All Utilities & settings
+@import 'utilities/mixins/*';
+@import 'utilities/functions/*';
+
+@import 'settings/import';
+
+// All Base
+@import 'universal/import';
+@import 'utilities/classes/*';
+
+// Extras
+@import 'specifics/body-content';
+
+
+// White fonts won't show up on CKeditor's white background, so we add a gray backdrop
+.text-color--full-white,
+.link-color--full-white,
+span[style*='color:#ffffff;'] {
+  position: relative;
+
+  &::before {
+    content: '';
+    background: color(mono, 75);
+    position: absolute;
+    height: 200%;
+    top: 0;
+    bottom: 0;
+    font-family: font(georgia);
+    margin: auto;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+body {
+  background: white;
+  padding: 1rem;
+
+  &.cke_editable_themed {
+    // Let's give a little hue to white for dark mode user's so we don't burn retinas
+    &.gin--dark-mode {
+      background-color: #ebebeb;
+    }
+  }
+}

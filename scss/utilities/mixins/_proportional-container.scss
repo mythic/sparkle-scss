@@ -1,0 +1,28 @@
+// @file _proportional-container.scss
+
+/// Sets up a container to "crop" a child element. The child element should be 
+/// set with the `object-cover()` mixin, or similar styling rules.
+///
+/// @author @jhogue
+/// @group utilities
+///
+/// @param {list} ratio [1 1]
+///
+/// @require {mixin} maintain-ratio
+///
+/// @example scss - scss
+///   @include proportional-container(16 9);
+///
+/// @example css - css
+///   position: relative;
+///   overflow: hidden;
+///   z-index: 1;
+///   height: 0;
+///   padding-bottom: 56.25%;
+///   width: 100%;
+@mixin proportional-container($ratio: 1 1) {
+  @include maintain-ratio($ratio);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}

@@ -1,0 +1,103 @@
+// @file _forms.scss
+
+// Form specific variables
+$form-border-color: color(mono, 25);
+$form-border-focus: color(mono, 33);
+$form-border-width: 1.5px;
+$form-border-radius: $default-border-radius;
+$form-placeholder-color: color(mono, 33);
+$form-color: color(mono, 66);
+$form-padding: 0.25em 0.75em;
+
+fieldset {
+  @extend .u-h3;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  margin-bottom: 1em;
+  padding: 1em 1em 0;
+}
+
+label {
+  font-weight: $font-weight-bold;
+}
+
+input,
+textarea {
+  border: 0;
+  border-bottom: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  color: $form-color;
+  display: inline-block;
+  padding: $form-padding;
+  transition: $default-transition;
+  width: 100%;
+  margin-bottom: 0.25rem;
+
+  &::placeholder {
+    color: $form-placeholder-color;
+    font-style: italic;
+  }
+
+  // A visual hint for the user that this element is interactive
+  &:hover {
+    border-color: darken($form-border-focus, 10%);
+    outline: none;
+  }
+
+  // Adjust colors when this element is focused
+  &:focus {
+    border-color: $form-border-focus;
+    color: $form-color;
+  }
+
+  &[required]:focus,
+  &[required=true]:focus,
+  &[required='required']:focus {
+    border-color: $color-error;
+    box-shadow: 0 0 0.5em rgba($color-error, 0.5);
+    outline: none;
+  }
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+
+select {
+  background-color: color(mono, white);
+  background-image: none;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  color: $form-color;
+  padding: $form-padding;
+  width: 100%;
+}
+
+input[type='file'] {
+  line-height: 1;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: auto;
+}
+
+// Form action buttons
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button {
+  transition: $default-transition;
+  width: auto;
+}
+
+// ! ===== Special rules for older Safari and iOS =====
+input[type='search'],
+input[type='email'],
+input[type='url'],
+input[type='tel'],
+input[type='number'] {
+  -webkit-appearance: textfield;
+}

@@ -1,0 +1,16 @@
+// @file _z-index.scss
+
+/// A central place to store set z-index values so that you can easily see and 
+/// keep track of which things will be set above others
+///
+/// @group settings
+///
+/// @example scss - scss
+///   z-index: z-index(all-the-way-up);
+///
+/// @example css - css
+///   z-index: 2147483647;
+$z-index: (
+  base: 0,
+  all-the-way-up: 2147483647, // This is our highest possible value
+);
