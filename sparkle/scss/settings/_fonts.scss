@@ -1,0 +1,30 @@
+// @file fonts.scss
+
+/// Fonts
+/// @group settings
+/// @type map
+$fonts: (
+  georgia: (
+    base: #{'Georgia', 'Cambria', 'Times New Roman', 'Times', serif}, // Regular font
+  ),
+  helvetica: (
+    base: #{'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif}, // Regular font
+  ),
+  lucida-grande: (
+    base: #{'Lucida Grande', 'Tahoma', 'Verdana', 'Arial', sans-serif}, // Regular font
+  ),
+  source-code-pro: (
+    base: #{'Source Code Pro', 'Anonymous Pro', Consolas, 'Envy Code R', 'Ubuntu Mono', Inconsolata-g, Inconsolata, monospace}, // Regular font
+  ),
+  verdana: (
+    base: #{'Verdana', 'Geneva', sans-serif}, // Regular font
+  ),
+);
+
+// Font weight number settings
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+
+// Global font declarations
+$font-sans: font(helvetica);
+$font-mono: font(source-code-pro);

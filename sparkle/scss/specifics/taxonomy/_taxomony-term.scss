@@ -1,0 +1,9 @@
+// @file taxonomy-term.scss
+
+.taxonomy-term {
+  width: 100%;
+  max-width: $max-width;
+  margin: auto;
+  padding: $gutter;
+  background: tint(pink, 50%);
+}

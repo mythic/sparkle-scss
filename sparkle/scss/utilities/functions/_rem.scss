@@ -1,0 +1,26 @@
+// @file rem.scss
+
+/// Convert a given pixel value to its equivelant `rem` value.
+///
+/// @author @thoughtbot
+/// @group utilities
+///
+/// @require strip-unit
+///
+/// @param {float} $value - numeric value assumed to be pixels
+/// @param {float} $base - numeric value for the pixel multiplier *(very optional)*
+///
+/// @example scss - scss
+///   width: rem(48);
+///
+/// @example css - css
+///   width: 3rem;
+@function rem($value, $base: $base-type-size-px) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @if not unitless($base) {
+    $base: strip-unit($base);
+  }
+  @return ($value / $base) * 1rem;
+}

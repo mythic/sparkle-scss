@@ -1,0 +1,18 @@
+// @file _tint.scss
+
+/// Mix in white to lighten a color.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @param {string} color original color to be lightened
+/// @param {integer} percentage amount the color should be lightened
+///
+/// @example scss - scss
+///   color: tint(pink, 50%);
+///
+/// @example css - css
+///   color: ##ffe0e5;
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}

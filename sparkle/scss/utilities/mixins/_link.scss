@@ -1,0 +1,135 @@
+// @file _link.scss
+
+/// Styles all states of a link element. Provides an accesible hover for 
+/// non-touch devices, turns it into the active state for mobile, and maintains 
+/// a no-js fallback. Used when styling 
+/// interactive portions of a link element.  
+///
+/// @author jhogue
+/// @group utilities
+///
+/// @require {external} Modernizr.js or equivelant get 
+/// touchevent classes.
+///
+/// @param {string} state element state to be styled for, accepts 'idle' or 'hover'
+/// @param {boolean} disabled optional flag to style all states of the link 
+///   element in their disabled format
+///
+/// @example scss - scss
+///   .link {
+///    padding: .5em 1em; // Styles that apply to all states
+///
+///    @include link('idle') {
+///      color: black; // Styles for the :link and :visited states
+///    }
+///    @include link('hover') {
+///      color: red; // Styles for the :focus, :hover and :active states
+///    }
+///
+///    &__disabled {
+///      @include link('hover', true) {
+///       color: silver; // All psuedo states are included
+///      }
+///    }
+///   }
+///
+/// @example css - css
+///   .link {
+///     padding: .5em 1em;
+///   }
+///   .link,
+///   .link:link,
+///   .link:visited {
+///     color: black;
+///   }
+///   .no-js .link:hover,
+///   .no-js .link:focus,
+///   .js.no-touchevents .link:hover,
+///   .js.no-touchevents .link:focus,
+///   .js.touchevents .link:active {
+///     color: red;
+///   }
+///   .no-js .link__disabled,
+///   .no-js .link__disabled:link,
+///   .no-js .link__disabled:visited,
+///   .no-js .link__disabled:hover,
+///   .no-js .link__disabled:focus,
+///   .js.no-touchevents .link__disabled,
+///   .js.no-touchevents .link__disabled:link,
+///   .js.no-touchevents .link__disabled:visited,
+///   .js.no-touchevents .link__disabled:hover,
+///   .js.no-touchevents .link__disabled:focus,
+///   .js.touchevents .link__disabled,
+///   .js.touchevents .link__disabled:active {
+///     cursor: default;
+///     color: silver;
+///   }
+@mixin link($state: 'idle', $disabled: false) {
+  $modernizr-hook-off: 'no-touchevents';
+  $modernizr-hook-on: 'touchevents';
+  $modernizr: true !default; // set this to false to maintain mixin but use the no-modernizr fallbacks
+
+  @if ($state != 'idle') and ($state != 'hover') {
+    @error "First parameter expects `idle` or `hover` as valid values";
+  }
+  @if ($disabled != true) and ($disabled != false) {
+    @error 'Second parameter must be true or false';
+  }
+
+  @if $state == 'idle' {
+    &,
+    &:link,
+    &:visited {
+      @content;
+    }
+  }
+
+  @if $state == 'hover' {
+    @if $disabled == true {
+      // If this link is meant to look disabled, style all states the same
+      @if $modernizr == true {
+        .no-js &,
+        .no-js &:link,
+        .no-js &:visited,
+        .no-js &:hover,
+        .no-js &:focus,
+        .js.#{$modernizr-hook-off} &,
+        .js.#{$modernizr-hook-off} &:link,
+        .js.#{$modernizr-hook-off} &:visited,
+        .js.#{$modernizr-hook-off} &:hover,
+        .js.#{$modernizr-hook-off} &:focus,
+        .js.#{$modernizr-hook-on} &,
+        .js.#{$modernizr-hook-on} &:active {
+          cursor: default;
+          @content;
+        }
+      } @else {
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:focus,
+        &:active {
+          cursor: default;
+          @content;
+        }
+      }
+    } @else {
+      @if $modernizr == true {
+        .no-js &:hover,
+        .no-js &:focus,
+        .js.#{$modernizr-hook-off} &:hover,
+        .js.#{$modernizr-hook-off} &:focus,
+        .js.#{$modernizr-hook-on} &:active {
+          @content;
+        }
+      } @else {
+        &:hover,
+        &:focus,
+        &:active {
+          @content;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// @file layout.scss
+
+/////
+/// @group settings
+/////
+
+/// The maximum width our body text should fill in any space, should
+/// be used in some way on almost every WYSIWYG container
+/// @example scss
+///   max-width: $text-width;
+$text-width: rem(712);
+
+/// The maximum width of elements that reside alongside body text
+/// like an image, video, or pull quote (often times these are 
+/// designed to be wider)
+/// @example scss
+///   max-width: $text-sibling-width;
+$text-sibling-width: rem(986);
+
+/// The maximum width we'd like to allow major elements to expand to, like
+/// the main content area or the footer
+$max-width: rem(1110);
+
+/// A special extended width area we can use for elements that deserve more
+/// breathing room, like the header perhaps
+$extended-width: rem(1350);
+
+/// The default amount of space used to pad between things to give the site
+/// an overall consistent spacing feel
+$gutter: 1.5rem;

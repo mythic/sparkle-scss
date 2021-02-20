@@ -1,0 +1,339 @@
+// @file typography.scss
+
+// establishing some vertical rhythm for no type elements
+// use this on margin bottom etc.
+$vert-line-height: $line-height * 1em;
+
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 16px;
+  color: $color-text;
+  font-family: $font-sans;
+  font-weight: $font-weight-normal;
+  line-height: $line-height;
+}
+
+a {
+  transition: $default-transition;
+
+  @include link() {
+    color: $color-link;
+  }
+
+  @include link('hover') {
+    color: darken($color-link, 5);
+  }
+
+  &[href^=tel] {
+    color: inherit;
+    text-decoration: dotted;
+  }
+}
+
+// Headings
+h1,
+.u-h1,
+h2,
+.u-h2,
+h3,
+.u-h3,
+h4,
+.u-h4,
+h5,
+.u-h5,
+h6,
+.u-h6 {
+  clear: both;
+  color: color(brand, purple);
+}
+
+h1,
+.u-h1 {
+  @include responsive-type-size(h1);
+  font-family: font(helvetica);
+  line-height: 1;
+}
+
+h2,
+.u-h2 {
+  @include responsive-type-size(h2);
+  font-family: font(helvetica);
+  line-height: 1;
+}
+
+h3,
+.u-h3 {
+  @include responsive-type-size(h3);
+  font-family: font(helvetica);
+  line-height: 1.25;
+}
+
+h4,
+.u-h4 {
+  @include responsive-type-size(h4);
+  font-family: font(helvetica);
+  line-height: 1.25;
+  letter-spacing: 0.48px;
+}
+
+h5,
+.u-h5 {
+  @include responsive-type-size(h5);
+  font-family: font(helvetica);
+  line-height: 1.25;
+  letter-spacing: 0.38px;
+}
+
+h6,
+.u-h6 {
+  @include responsive-type-size(h6);
+  font-family: font(helvetica);
+  line-height: 1.5;
+}
+
+.tagline {
+  @include responsive-type-size(tagline);
+  font-family: font(helvetica);
+  line-height: 2;
+  letter-spacing: 4px;
+}
+
+// Set a fluid size for block-level content elements
+p,
+li,
+dt,
+dd,
+th,
+td,
+address,
+input,
+button,
+select,
+textarea {
+  @include responsive-type-size();
+}
+
+// Set the vertical rhythm for block-level containers
+p,
+ul,
+ol,
+dl,
+address,
+form,
+figure,
+table {
+  margin-bottom: $vert-line-height;
+}
+
+// Nested lists should not have margin bottom
+ol ol,
+ul ul,
+ul ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+// Block level elements
+blockquote {
+  quotes: none;
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  max-width: $text-width;
+  margin: auto;
+
+  @include screen(small-up) {
+    padding: 2rem 3rem;
+  }
+
+  footer {
+    margin-top: $gutter;
+  }
+
+  cite {
+    border-bottom: 0;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid color(mono, 25);
+  height: 0;
+  line-height: 1;
+  margin: $vert-line-height 0;
+  width: 100%;
+}
+
+ul,
+ol {
+  margin-left: 1.5rem;
+}
+
+// scss-lint:disable MergeableSelector
+ul { list-style: square; }
+
+ul ul { list-style: disc; }
+
+ul ul ul { list-style: circle; }
+
+ol { list-style: decimal; }
+
+ol ol { list-style: upper-alpha; }
+
+ol ol ol { list-style: upper-roman; }
+
+ol ol ol ol { list-style: lower-alpha; }
+
+ol ol ol ol ol { list-style: lower-roman; }
+// scss-lint:enable MergeableSelector
+
+dl { border-top: 1px solid $color-borders; }
+
+dt,
+dd {
+  border-left: 1px solid $color-borders;
+  border-right: 1px solid $color-borders;
+  padding: 0.75em 1em 0.5625em;
+}
+
+dt {
+  border-bottom: 1px dotted $color-borders;
+  font-weight: $font-weight-bold;
+}
+
+dd {
+  border-bottom: 2px solid $color-borders;
+}
+
+table {
+  @if $table-border-collapse == true {
+    border-collapse: collapse;
+  }
+  border-spacing: 0;
+  width: 100%;
+
+  th {
+    border-bottom: 2px solid $table-border-color;
+    padding: $table-cell-padding;
+    text-align: left;
+  }
+
+  td {
+    border-top: 1px solid $table-border-color;
+    padding: $table-cell-padding;
+  }
+
+  caption {
+    text-align: center;
+  }
+
+  // zebra striping pattern
+  tbody {
+    tr:nth-of-type(odd) {
+      background-color: color(mono, 10);
+    }
+  }
+}
+
+// Inline typography elements
+strong,
+b,
+em,
+i,
+cite,
+small,
+sup,
+sub {
+  letter-spacing: 0.03125em;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 1;
+  position: relative;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+abbr[title] {
+  font-size: 75%;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+}
+
+var {
+  color: color(mono, 75);
+  display: inline-block;
+  padding: 0 0.125em;
+}
+
+// Proper code blocks need to be surrounded by a <pre>. They work together.
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word; // For IE 5.5+ and up
+
+  code {
+    border-bottom: 1px solid color(mono, 25);
+    border-left: 5px solid $color-code;
+    border-radius: 0;
+    display: block;
+    margin: 0;
+    padding: 1.375em 1.25em 1.3125em;
+  }
+}
+
+code,
+kbd,
+samp,
+mark,
+ins {
+  display: inline-block;
+  line-height: 1.5;
+  padding: 0.125em 0.25em 0;
+}
+
+code,
+kbd,
+samp {
+  background: rgba(#000, 0.05);
+  border-radius: $default-border-radius;
+  box-shadow: 0 0 0.25em rgba(#000, 0.1) inset;
+  font-family: $font-mono;
+}
+
+code {
+  color: $color-code;
+}
+
+mark {
+  background-color: #ff9; // yellow
+}
+
+strike,
+s {
+  color: color(mono, 25);
+}
+
+del {
+  color: $color-error;
+}
+
+ins {
+  background-color: color(mono, 25);
+  text-decoration: none;
+}
+
+small {
+  font-size: 87.5%;
+}

@@ -1,0 +1,32 @@
+// @file _sidebar-toggle.scss
+
+// Sidebar toggle
+.layout-toggle {
+  display: none;
+
+  @include screen(medium-down) {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    font-size: 2em;
+    cursor: pointer;
+    color: white;
+    display: block;
+  }
+}
+
+.sidebar-closed {
+  @include screen(medium-down) {
+    .sidebar {
+      transform: translateX(300px); // this should be the width of the sidebar
+    }
+
+    .main {
+      padding-left: 0;
+    }
+  
+    .header {
+      left: 0;
+    }
+  }
+}

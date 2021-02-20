@@ -1,0 +1,19 @@
+// @file _rem-breakpoint.scss
+
+/// Retrieve the `rem` version of a breakpoint value from our defined set. See `settings/_breakpoints.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require {map} $breakpoints
+///
+/// @param {string} size breakpoint size name, i.e. small
+///
+/// @example scss - scss
+///   rem-breakpoint(small)
+///
+/// @example css - css
+///   30rem
+@function rem-breakpoint($size: 'base') {
+  @return rem( map-get( $breakpoints, $size ) );
+}

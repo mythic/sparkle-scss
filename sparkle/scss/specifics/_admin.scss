@@ -1,0 +1,55 @@
+// @file admin.scss
+
+// Admin overrides for Drupal sites with Gin admin theme
+.region__system {
+  padding: 0.5rem;
+}
+
+.system {
+  &__message {
+    background: color(brand, purple);
+    color: color(mono, white);
+    letter-spacing: 0.5px;
+    width: 100%;
+    padding: 0.25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+}
+
+.toolbar-menu-administration {
+  a {
+    font-size: 13px;
+
+    @include link('hover') {
+      color: var(--colorGinTitle);
+    }
+  }
+}
+
+div[aria-label*='Status message'] {
+  background: var(--colorGinPrimary);
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  position: relative;
+}
+
+#toolbar-bar {
+  div.visually-hidden {
+    position: relative !important;
+    clip: unset;
+    height: auto;
+    width: auto;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    a {
+      color: color(mono, white) !important;
+    }
+  }
+}

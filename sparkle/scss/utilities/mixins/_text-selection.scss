@@ -1,0 +1,34 @@
+// @file _text-selection.scss
+
+/// Sets the highlight styles for selected text on the site.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @param {string} selection-color highlight color for selected text
+/// @param {string} font-color text color for selected text
+///
+/// @example scss - scss
+///  @include text-selection(pink, white);
+///  
+/// @example css - css
+///  &::selection {
+///    background: pink;
+///    color: white;
+///  }
+///
+///  &::-moz-selection {
+///    background: pink;
+///    color: white;
+///  }
+@mixin text-selection($selection-color, $font-color) {
+  &::selection {
+    background: $selection-color;
+    color: $font-color;
+  }
+
+  &::-moz-selection {
+    background: $selection-color;
+    color: $font-color;
+  }
+}

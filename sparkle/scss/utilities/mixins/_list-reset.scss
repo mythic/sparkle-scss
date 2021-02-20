@@ -1,0 +1,23 @@
+// @file _list-reset.scss
+
+/// Remove the margin, padding, and bullets from lists.
+///
+/// @author jcionci
+/// @group utilities
+///
+/// @example scss - css
+///   ul {
+///     @include list-reset();
+///   }
+///
+/// @example css - scss
+///   ul {
+///     list-style-type: none;
+///     margin: 0;
+///     padding: 0;
+///   }
+@mixin list-reset() {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
