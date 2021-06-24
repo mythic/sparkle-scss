@@ -1,4 +1,4 @@
-:sparkles: Hello! :sparkles:
+# :sparkles: Hello! :sparkles:
 
 Welcome to `sparkle-scss`, a simple and lightweight foundation for creating new style sets with sass. This theming set is made to be easily used with any site/cms, but does show a small amount of love for Drupal, since that is our specialty here at Mythic Digital. Notes and examples for our project variables, mixins, functions, and utility classes can be found in our documentation, [here](http://sparkle.mythicdigital.io). Read on the get some basic info about suggested naming conventions, a quick tour of the overall theme architecture and some helpful tips on using sparkle for your next theming adventure.
 
