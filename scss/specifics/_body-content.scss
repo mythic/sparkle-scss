@@ -200,26 +200,6 @@
 
 
     .wysiwyg-text-color {
-      &--pink {
-        color: color(brand, pink) !important;
-      }
-
-      &--blue {
-        color: color(brand, blue) !important;
-      }
-
-      &--purple {
-        color: color(brand, purple) !important;
-      }
-
-      &--gray {
-        color: color(mono, 33) !important;
-      }
-
-      &--black {
-        color: color(brand, black) !important;
-      }
-
       &--white {
         color: color(mono, white) !important;
         background: lightgray;
