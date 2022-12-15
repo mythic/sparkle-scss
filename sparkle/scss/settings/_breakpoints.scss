@@ -1,0 +1,52 @@
+// @file breakpoints.scss
+
+/// Breakpoints
+/// @group settings
+$breakpoints: (
+  base: 480,
+  xsmall: 480,
+  small: 620,
+  medium: 768,
+  large: 1024,
+  xlarge: 1440,
+  xxlarge: 1920
+);
+
+@mixin screen($size) {
+  @if $size == xsmall-up {
+    @media (min-width: px-breakpoint(xsmall)) { @content; }
+  } @else if $size == xsmall {
+    @media (min-width: px-breakpoint(xsmall)) and (max-width: (px-breakpoint(small) - 1px)) { @content; }
+  } @else if $size == xsmall-down {
+    @media (min-width: 0) and (max-width: (px-breakpoint(small) - 1px)) { @content; }
+  } @else if $size == small-up {
+    @media (min-width: px-breakpoint(small)) { @content; }
+  } @else if $size == small {
+    @media (min-width: px-breakpoint(small)) and (max-width: (px-breakpoint(medium) - 1px)) { @content; }
+  } @else if $size == small-down {
+    @media (min-width: 0) and (max-width: (px-breakpoint(medium) - 1px)) { @content; }
+  } @else if $size == medium-up {
+    @media (min-width: px-breakpoint(medium)) { @content; }
+  } @else if $size == medium {
+    @media (min-width: px-breakpoint(medium)) and (max-width: (px-breakpoint(large) - 1px)) { @content; }
+  } @else if $size == medium-down {
+    @media (min-width: 0) and (max-width: (px-breakpoint(large) - 1px)) { @content; }
+  } @else if $size == large-up {
+    @media (min-width: px-breakpoint(large)) { @content; }
+  } @else if $size == large {
+    @media (min-width: px-breakpoint(large)) and (max-width: (px-breakpoint(xlarge) - 1px)) { @content; }
+  } @else if $size == large-down {
+    @media (min-width: 0) and (max-width: (px-breakpoint(xlarge) - 1px)) { @content; }
+  } @else if $size == xlarge-up {
+    @media (min-width: px-breakpoint(xlarge)) { @content; }
+  } @else if $size == xlarge {
+    @media (min-width: px-breakpoint(xlarge)) and (max-width: (px-breakpoint(xxlarge) - 1px)) { @content; }
+  } @else if $size == xlarge-down {
+    @media (min-width: 0) and (max-width: (px-breakpoint(xxlarge) - 1px)) { @content; }
+  } @else if $size == xxlarge-up {
+    @media (min-width: px-breakpoint(xxlarge)) { @content; }
+  }
+}
+
+$min-vw: em-breakpoint(small) !default;
+$max-vw: em-breakpoint(xlarge) !default;

@@ -1,0 +1,19 @@
+// @file _px-breakpoint.scss
+
+/// Retrieve the `px` version of a breakpoint value from our defined set. See `settings/_breakpoints.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require {map} $breakpoints
+///
+/// @param {string} size breakpoint size name, i.e. small
+///
+/// @example scss - scss
+///   px-breakpoint(small)
+///
+/// @example css - css
+///   480px
+@function px-breakpoint($size: 'base') {
+  @return px( map-get( $breakpoints, $size ) );
+}

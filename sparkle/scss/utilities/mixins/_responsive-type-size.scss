@@ -1,0 +1,66 @@
+// @file _responsive-type-size.scss
+
+/// Output all responsive sizes for a typographic element.
+///
+/// @author jhogue
+/// @group utilities
+///
+/// @require {map} $type-sizes
+/// @require {function} em
+/// @require {function} em-breakpoint
+/// @require {function} type-size
+/// @require {mixin} fluid-units
+///
+/// @param {string} element name [base]
+///
+/// @example scss - scss
+///   @include responsive-type-size(h1);
+///
+/// @example css - css
+///   h1 {
+///     font-size: 1.9375em;
+///   }
+///
+///   @media (min-width: 30em) {
+///     h1 {
+///       font-size: calc(1.9375em + 0.8125 * (100vw - 30em) / 55);
+///     }
+///   }
+///
+///   @media (min-width: 85em) {
+///     h1 {
+///       font-size: calc(1.9375em + 0.8125 * 1em);
+///     }
+///   }
+@mixin responsive-type-size($elem: 'base') {
+  @if type-of($type-sizes) != 'map' {
+    @error 'A list named $type-sizes is undefined. [Mixin responsive-type-size()]';
+  }
+
+  // List only the keys from the $type-sizes list.
+  // Expects only two. Only uses the first and last
+  $keys: map-keys($type-sizes);
+  $first-key: nth($keys, 1);
+  $last-key: nth($keys, length($keys));
+
+  // Change these key values into a typographic value
+  // by getting the matching key/value pair from the $type-sizes array
+  $min-value: rem(type-size($first-key, $elem));
+  $max-value: rem(type-size($last-key, $elem));
+
+  // Use the same keys to grab the corresponding breakpoints
+  @if type-of($breakpoints) != 'map' {
+    @error 'A list named $breakpoints is undefined. [Mixin responsive-type-size()]';
+  }
+  @if not map-has-key($breakpoints, $first-key) {
+    @error 'Your $type-sizes map key "#{$first-key}" does not have a corresponding key in $breakpoints. [Mixin responsive-type-size()]';
+  }
+  @if not map-has-key($breakpoints, $last-key) {
+    @error 'Your $type-sizes map key "#{$last-key}" does not have a corresponding key in $breakpoints. [Mixin responsive-type-size()]';
+  }
+  $min-vw: em-breakpoint($first-key);
+  $max-vw: em-breakpoint($last-key);
+
+  // Finally, use this mixin to set the base size and max size within the viewport range
+  @include fluid-units('font-size', $min-value, $max-value, $min-vw, $max-vw);
+}

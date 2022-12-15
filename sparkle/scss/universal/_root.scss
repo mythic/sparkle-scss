@@ -1,0 +1,10 @@
+// @file root.scss
+
+// Root elements
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+// Selected text highlight styling
+@include text-selection(color(brand), color(mono, white));

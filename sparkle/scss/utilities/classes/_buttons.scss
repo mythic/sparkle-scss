@@ -1,0 +1,137 @@
+// @file buttons.scss
+
+/// Creates extendable utility classes for buttons. Use the classes directly in 
+/// the markup or extend them to an existing class.
+///
+/// @group utilities
+///
+/// @example scss
+///   @extend .u-button--solid;
+.u-button {
+  // Set the base styles for a default button
+  @include link() {
+    border-radius: 3px;
+    display: inline-block;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    font-family: font(helvetica);
+    font-size: 13px;
+    line-height: 50px;
+  }
+
+  &--solid {
+    // Extend the basic styles of a button set above, then make changes
+    @extend .u-button;
+
+    @include link('idle') {
+      background-color: color(brand, purple);
+      border-color: shade(color(brand, purple), 8%);
+      color: color(mono, white);
+      overflow: hidden;
+      position: relative;
+      transition: all 0.75s;
+      text-decoration: none;
+      z-index: 2;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        background: color(brand, blue);
+        width: 200%;
+        padding-top: 200%;
+        transform: rotate(-65deg);
+        position: absolute;
+        left: 150%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 0.75s;
+        z-index: -1;
+      }
+    }
+
+    @include link('hover') {
+      color: color(mono, white);
+
+      &::before {
+        left: 0;
+      }
+    }
+
+    &--white {
+      @include link('idle') {
+        background-color: color(mono, white);
+        border-color: darken(color(mono, white), 8%);
+        color: color(brand, purple);
+
+        &::before {
+          background: color(brand, blue);
+        }
+      }
+
+      @include link('hover') {
+        color: color(brand, purple);
+      }
+    }
+  }
+
+  &--ghost {
+    @include link('idle') {
+      background-color: none;
+      border: solid 1px darken(color(brand, purple), 8%);
+      color: color(brand, purple);
+      padding: 0 5rem 0 2rem;
+      border-radius: 0;
+      position: relative;
+      transition: all 0.75s;
+      text-decoration: none;
+      z-index: 2;
+      overflow: hidden;
+
+
+      &::before {
+        content: '';
+        display: inline-block;
+        background: color(brand, purple);
+        width: 200%;
+        padding-top: 200%;
+        transform: rotate(-65deg);
+        position: absolute;
+        left: 150%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 0.75s;
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        background: url('/themes/custom/juice/images/arrow.png');
+        height: 15px;
+        width: 28px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 2rem;
+        position: absolute;
+        filter: brightness(0) saturate(100%) invert(15%) sepia(17%) saturate(6016%) hue-rotate(215deg) brightness(86%) contrast(92%);
+      }
+
+      @include link('hover') {
+        &::before {
+          left: 0;
+        }
+      }
+    }
+
+    @include link('hover') {
+      background-color: color(brand, purple);
+      color: color(mono, white);
+
+      &::after {
+        filter: unset;
+      }
+    }
+  }
+}

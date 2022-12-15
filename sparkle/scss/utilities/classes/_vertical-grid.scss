@@ -1,0 +1,15 @@
+// @file _vertical-grid.scss
+
+/// Provides a grid overlay to the given object to help debug a layout visually.
+///
+/// @group utilities
+///
+/// @example scss
+///   @extend .u-vertical-grid;
+
+.u-vertical-grid {
+  // scss-lint:disable UrlFormat
+  background-image: url('http://basehold.it/i/31/cc0000');
+  background-position: 0 8px;
+  // scss-lint:enable UrlFormat
+}

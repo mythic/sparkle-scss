@@ -1,0 +1,21 @@
+{
+  "name": "sassdoc-theme-sparkle",
+  "version": "0.1.0",
+  "keywords": [
+    "sassdoc-theme"
+  ],
+  "dependencies": {
+    "extend": "^1.0",
+    "swig": "^1.4.0",
+    "themeleon": "^3.0.0",
+    "sassdoc-extras": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-stylelint": "^13.0.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-scss": "^3.18.0"
+  }
+}

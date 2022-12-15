@@ -1,0 +1,20 @@
+// @file styles.scss
+
+// Utilities first
+@import 'utilities/mixins/*';
+@import 'utilities/functions/*';
+
+// Add settings
+@import 'settings/import';
+
+// Define the base set
+@import 'universal/import';
+@import 'utilities/classes/*';
+
+// Style site components
+@import  'specifics/**/*';
+
+
+// Turn this on to use extra styling tools during development
+// @import
+//   "devtools/import";

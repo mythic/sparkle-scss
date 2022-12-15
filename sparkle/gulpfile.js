@@ -2,31 +2,12 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const stylelint = require('gulp-stylelint');
 const sassGlob = require('gulp-sass-glob');
-const sassdoc = require('sassdoc');
 
 // Directories to search SCSS files to compile. By default, node-sass does not
 // compile files that begin with _.
 const SCSS_FILE_PATHS = [
   "scss/**/*.scss",
 ];
-
-/**
- * Sass documenation generator.
- */
-
- const generateDocs = () => {
-  var options = {
-    dest: 'docs',
-    verbose: true,
-    theme: './sparkle',
-  };
-
-   return gulp
-     .src(SCSS_FILE_PATHS)
-     .pipe(sassdoc(options));
- };
-
-exports.docs = gulp.series(generateDocs);
 
 /**
  * Compile tasks.
@@ -42,9 +23,7 @@ const compileStyles = () => {
       ]
     }))
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest((file) => {
-      return file.base;
-    }));
+    .pipe(gulp.dest('assets/css/'));
 };
 
 exports.compile = gulp.series(compileStyles);
@@ -54,7 +33,7 @@ exports.compileStyles = compileStyles;
  * Watch tasks.
  */
 const watchStyles = () => {
-  return gulp.watch(SCSS_FILE_PATHS, gulp.series(compileStyles, generateDocs));
+  return gulp.watch(SCSS_FILE_PATHS, gulp.series(compileStyles));
 };
 
 exports.watch = gulp.parallel(watchStyles);

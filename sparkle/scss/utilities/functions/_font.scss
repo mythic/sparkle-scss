@@ -1,0 +1,28 @@
+// @file _font.scss
+
+/// Retrieve a font style name from one of our defined font sets. See `settings/_fonts.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require {function} map-deep-get
+/// @require {map} $fonts
+///
+/// @param {string} font font family name
+/// @param {string} style font style, i.e. bold
+///
+/// @example scss - scss
+///   color: font(georgia, italic);
+///
+/// @example css - css
+///   color: #fff;
+@function font($font, $style:base) {
+
+  @if not index(map-keys($fonts), $font) {
+    @error 'font `#{$font}` does not exist.';
+  }
+  @if not index(map-keys(map-get($fonts, $font)), $style) {
+    @error 'There is no `#{$style}` defined in your `#{$font}` font map however, its being called in your theme.';
+  }
+  @return map-deep-get( $fonts, $font, $style );
+}

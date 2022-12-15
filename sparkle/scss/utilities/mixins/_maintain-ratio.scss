@@ -1,0 +1,25 @@
+// @file _maintain-ratio.scss
+
+/// Calculates a percentage padding value to "fix" the proportions of a container 
+/// to an aspect ratio.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @param {list} Ratio [1 1]
+///
+/// @example scss - scss
+///   @include maintain-ratio(16 9)
+///
+/// @example css - css
+///   width: 100%;
+///   height: 0;
+///   padding-bottom: 56.25%;
+@mixin maintain-ratio($ratio: 1 1) {
+  @if length($ratio) < 2 or length($ratio) > 2 {
+    @warn '$ratio must be a list with two values.';
+  }
+  width: 100%;
+  height: 0;
+  padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+}

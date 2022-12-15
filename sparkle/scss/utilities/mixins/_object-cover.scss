@@ -1,0 +1,48 @@
+// @file _object-cover.scss
+
+/// Sets an object to "crop" or contain within a container. The container element 
+/// should be set with the `proportional-container()` mixin, or similar styling 
+/// rules.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @param {string} position ['100% auto'] - 
+///   accepts '100% auto' (width height), 'auto 100%' (width height), or 'contain'
+///
+/// @example scss - scss
+///  @include object-cover(auto 100%);
+@mixin object-cover($position: '100% auto') {
+  $allowed: ('100% auto','auto 100%','contain');
+
+  @if not index($allowed, $position) {
+    @error "Keyword `#{$position}` for mixin 'object-cover' is not allowed. `#{$allowed}` is expected.";
+  }
+  position: absolute;
+  z-index: 2;
+
+  @if ($position == 'contain') {
+    // Keep the entire element inside the container
+    @include transform(translate(-50%,-50%));
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+  } @else if ($position == '100% auto') {
+    // Fill the width, let the height be what it needs to be
+    @include transform(translateY(-50%));
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+  } @else {
+    // Default: Fill the height, let the width be what it needs to be
+    @include transform(translateX(-50%));
+    top: 0;
+    left: 50%;
+    width: auto;
+    max-width: none;
+    height: 100%;
+  }
+}

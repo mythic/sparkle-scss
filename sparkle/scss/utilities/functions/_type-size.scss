@@ -1,0 +1,24 @@
+// @file type-size.scss
+
+/// Retrieve a type size value from one of our defined responsive size sets. See `settings/_type-sizes.scss`.
+///
+/// @author jhogue
+/// @group utilities
+///
+/// @require {map} $type-sizes
+///
+/// @param {string} breakpoint desired screen size - see `settings/_breakpoints.scss`
+/// @param {string} element name [base]
+///
+/// @example scss - scss
+///    font-size: px(type-size('x-large', 'h1'));
+///
+/// @example css - css
+///    font-size: 31px;
+@function type-size($breakpoint, $element: 'base') {
+  @if type-of($type-sizes) != 'map' {
+    @error 'A list named $type-sizes is undefined. [Function type-size()]';
+  }
+  $elementsize: map-get(map-get($type-sizes, $breakpoint), $element);
+  @return $elementsize;
+}

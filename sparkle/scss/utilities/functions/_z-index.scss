@@ -1,0 +1,26 @@
+// @file _z-index.scss
+
+/// Retrieve a `z-index` value from our defined set. See `settings/_z-index.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require {function} map-deep-get
+/// @require {map} $z-index
+///
+/// @param {string} z-index-item z-index entry name, i.e. header
+///
+/// @example scss - scss
+///   z-index: z-index(all-the-way-up);
+///
+/// @example css - css
+///   z-index: 2147483647;
+@function z-index($z-index-item:base) {
+  $z-index-listing: $z-index;
+
+  @if not map-has-key($z-index-listing, $z-index-item) {
+    @error 'There is no `#{$z-index-item}` defined in your z-index z-index-listing, however, it is being called in your theme.';
+  }
+
+  @return map-get($z-index-listing, $z-index-item);
+}

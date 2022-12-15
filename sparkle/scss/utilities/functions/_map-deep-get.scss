@@ -1,0 +1,22 @@
+// @file map-deep-get.scss
+
+/// Fetch an item that's nested deeply within a map.
+///
+/// @author @HugoGiraudel
+///
+/// @group utilities
+///
+/// @parameter {map} $map - map
+/// @parameter {arglist} $keys - key
+///
+/// @example  scss - scss
+///   property: map-deep-get($colors, brand, pink);
+///
+/// @example css - css
+///   #e43c96
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

@@ -1,0 +1,19 @@
+// @file _em-breakpoint.scss
+
+/// Retrieve the `em` version of a breakpoint value from our defined set. See `settings/_breakpoints.scss`.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @require {map} $breakpoints
+///
+/// @param {string} size breakpoint size name, i.e. small
+///
+/// @example scss - scss
+///   em-breakpoint(small)
+///
+/// @example css - css
+///   30em
+@function em-breakpoint($size: 'base') {
+  @return em( map-get( $breakpoints, $size ) );
+}

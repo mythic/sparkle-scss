@@ -1,0 +1,48 @@
+// @file type-sizes.scss
+
+
+/// #### List of sizes for common typographical elements  
+/// A central place to universally set responsive type size values that can be  
+/// called throughout the project to maintain consistentcy  
+/// ##### How to use  
+/// Set desired font sizes for mobile and desktop as unitless pixels, our mixins 
+/// will fluidly change between the two values. You can add or change the 
+/// breakpoints used, just correspond the `$key` name (i.e. `xsmall`) to the names 
+/// set in `settings/_breakpoints.scss`. 
+/// @group settings
+/// @example scss - scss
+///   z-index: z-index(all-the-way-up);
+/// @example css - css
+///   z-index: 2147483647;
+$type-sizes: (
+
+  // scss-lint:disable DeclarationOrder
+  xsmall: (
+    tagline: 12,
+    base: 16,
+    paragraph: 16,
+    h6: 25,
+    h5: 18,
+    h4: 22,
+    h3: 34,
+    h2: 40,
+    h1: 45
+  ),
+
+  // scss-lint:disable DeclarationOrder
+  large: (
+    tagline: 14,
+    base: 18,
+    paragraph: 18,
+    h6: 27,
+    h5: 20,
+    h4: 25,
+    h3: 44,
+    h2: 52,
+    h1: 60
+  ),
+);
+
+$base-type-size: 1rem;
+$base-type-size-px: 16px;
+$line-height: 1.6;

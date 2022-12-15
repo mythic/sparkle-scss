@@ -1,0 +1,18 @@
+// @file _shade.scss
+
+/// Mix in black to darken a color.
+///
+/// @author nicholemaureen
+/// @group utilities
+///
+/// @param {string} color original color to be darkened
+/// @param {integer} percentage amount the color should be darkened
+///
+/// @example scss - scss
+///   color: shade(pink, 50%);
+///
+/// @example css - css
+///   color: #806066;
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
